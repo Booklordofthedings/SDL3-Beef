@@ -19,7 +19,7 @@ class Program
 	{
 		ProcessStartInfo info = scope .();
 		info.UseShellExecute = false;
-		info.SetFileNameAndArguments("curl -o sdl3.zip -L https://github.com/libsdl-org/SDL/releases/download/release-3.2.4/SDL3-devel-3.2.4-VC.zip");
+		info.SetFileNameAndArguments("curl -o sdl3.zip -L https://github.com/libsdl-org/SDL/releases/download/release-3.2.14/SDL3-devel-3.2.14-VC.zip");
 
 		SpawnedProcess p = scope .();
 		if(p.Start(info) case .Err)
@@ -44,9 +44,9 @@ class Program
 			if(!MiniZ.ZipReaderFileStat(&archive, i, &stats))
 				continue;
 
-			if(String.Compare(&stats.mFilename, "SDL3-3.2.4/lib/x64/SDL3.dll".Length, "SDL3-3.2.4/lib/x64/SDL3.dll", "SDL3-3.2.4/lib/x64/SDL3.dll".Length, false) == 0)
+			if(String.Compare(&stats.mFilename, "SDL3-3.2.14/lib/x64/SDL3.dll".Length, "SDL3-3.2.14/lib/x64/SDL3.dll", "SDL3-3.2.14/lib/x64/SDL3.dll".Length, false) == 0)
 				MiniZ.ZipReaderExtractToFile(&archive, i, "../dist/SDL3.dll", .None);
-			else if(String.Compare(&stats.mFilename, "SDL3-3.2.4/lib/x64/SDL3.lib".Length, "SDL3-3.2.4/lib/x64/SDL3.lib", "SDL3-3.2.4/lib/x64/SDL3.lib".Length, false) == 0)
+			else if(String.Compare(&stats.mFilename, "SDL3-3.2.14/lib/x64/SDL3.lib".Length, "SDL3-3.2.14/lib/x64/SDL3.lib", "SDL3-3.2.14/lib/x64/SDL3.lib".Length, false) == 0)
 				MiniZ.ZipReaderExtractToFile(&archive, i, "../dist/SDL3.lib", .None);
 		}
 
